@@ -12,6 +12,8 @@ pytest = "*"
 flake8 = "*"
 flask-migrate = "*"
 uvicorn = "*"
+pandas = "*"
+openpyxl = "*"
 
 [dev-packages]
 

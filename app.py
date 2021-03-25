@@ -29,6 +29,8 @@ migrate = Migrate(app, db)
 from routes.users import Users
 from routes.projects import Projects
 from routes.stations import Stations
+from routes.input_data import InputData
+
 
 api.add_resource(Users, "/users/<id>", "/users")
 api.add_resource(
@@ -39,6 +41,10 @@ api.add_resource(
     "/users/<user_id>/projects/<project_id>/stations/<id>",
     "/users/<user_id>/projects/<project_id>/stations",
 )
+
+api.add_resource(InputData, "/input-data/to-excel")
+# api.add_resource(InputData, "/input-data/to-json")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

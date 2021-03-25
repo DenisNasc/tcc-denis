@@ -10,7 +10,6 @@ response_fields = {
     "user_id": fields.String,
     "name": fields.String,
     "message": fields.String,
-    # "projects": {"id": fields.String},
 }
 
 
@@ -24,20 +23,16 @@ def init_args(fields):
     return args
 
 
-# APRENDER A RETORNAR OBJETOS EM UMA LISTA
-
-
 class Projects(Resource):
     @marshal_with(response_fields)
-    def get(self, user_id, id):
-        # if id == "1":
-        #     projects = Project.query.filter_by(user_id=user_id).all()
-        #     print(projects[0])
-        #     return {"projects": projects[0]}, 200, {}
+    def get(self, user_id, id=None):
+        if not id:
+            projects = Project.query.filter_by(user_id=user_id).all()
+            return projects, 200, {}
 
-        # project = Project.query.filter_by(user_id=user_id, id=id).first()
-        # print(project)
-        return {}, 200, {}
+        project = Project.query.filter_by(user_id=user_id, id=id).first()
+
+        return project, 200, {}
 
     @marshal_with(response_fields)
     def post(self, user_id):
